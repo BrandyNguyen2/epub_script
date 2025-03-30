@@ -5,12 +5,12 @@ from PIL import Image
 
 # Paths
 uploaded_file_path = 'PragmaticProgrammer.epub'
-extracted_path = 'PragmaticProgrammer_extracted'
-fixed_epub_path = 'PragmaticProgrammer_fixed.epub'
+extracted_path = 'PragmaticProgrammer_extracted' 
+fixed_epub_path = 'PragmaticProgrammer_fixed.epub' # returning new file
 
 # Step 1: Extract the EPUB contents
 def extract_epub(epub_path, output_path):
-    with zipfile.ZipFile(epub_path, 'r') as epub_zip:
+    with zipfile.ZipFile(epub_path, 'r') as epub_zip: # read epub file
         epub_zip.extractall(output_path)
 
 # Step 2: Fix text rendering in HTML files
@@ -21,7 +21,7 @@ def fix_html_text_rendering(html_path):
     # Remove <br> tags and merge paragraph lines
     for br in soup.find_all("br"):
         br.unwrap()
-    
+    # Removing unnecessary text
     for p in soup.find_all("p"):
         p.string = " ".join(p.stripped_strings)
     
